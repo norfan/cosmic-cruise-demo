@@ -98,7 +98,7 @@ import {
 
 import type { Sprite, SpriteConfig } from './sprites/Sprite';
 import type { CelestialSpriteConfig } from './sprites/CelestialSprite';
-import type { RegionBlock } from './scenes/Scene0Map';
+import type { RegionBlock } from './scenes/StrategicMapScene';
 
 // ── 精灵注册表 ───────────────────────────────────
 const SPRITE_REGISTRY: Record<string, {
@@ -982,7 +982,7 @@ export default function App() {
           </div>
           <div className="block-panel-info">
             <div className="block-panel-name">{selectedBlock.name}</div>
-            <div className="block-panel-land">{selectedBlock.land} · {selectedBlock.hub}</div>
+            <div className="block-panel-land">{selectedBlock.hubName}</div>
           </div>
           {!selectedBlock.unlocked && (
             <div className="block-panel-locked">🔒 未解锁</div>
