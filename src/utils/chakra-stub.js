@@ -1,0 +1,11 @@
+export const Icon = () => null;
+export const Button = () => null;
+export const Box = () => null;
+export const Flex = () => null;
+export const Text = () => null;
+export const HStack = () => null;
+export const VStack = () => null;
+export const ChakraProvider = ({children}) => children;
+export const extendTheme = () => ({});
+export const useSafeArea = () => ({ top: 0, bottom: 0, left: 0, right: 0 });
+export default {};

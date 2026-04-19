@@ -1,0 +1,40 @@
+.tier-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tier-current {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid;
+}
+
+.tier-icon {
+  font-size: 18px;
+}
+
+.tier-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tier-next {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #888;
+}
+
+.tier-next-label {
+  opacity: 0.7;
+}
+
+.tier-next-name {
+  color: #aaa;
+}

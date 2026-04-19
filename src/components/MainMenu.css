@@ -1,0 +1,666 @@
+/* MainMenu.css — 主菜单样式 */
+
+/* ── 容器 ────────────────────────────────────────────── */
+.main-menu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050816;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 24px;
+}
+
+/* 星空画布 */
+.starfield-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* 背景渐变叠加 */
+.menu-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 80, 160, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 100%, rgba(80, 0, 160, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0, 100, 160, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── 顶部区域 ────────────────────────────────────────── */
+.menu-header {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.menu-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.menu-logo-icon {
+  font-size: 36px;
+  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.6));
+}
+
+.menu-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu-title {
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 5px;
+  color: #00d4ff;
+  text-shadow: 0 0 24px rgba(0, 212, 255, 0.7), 0 0 48px rgba(0, 212, 255, 0.3);
+  margin: 0;
+  line-height: 1;
+}
+
+.menu-tagline {
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8888bb;
+  margin: 0;
+}
+
+/* 能量显示 */
+.menu-energy-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 12px;
+  padding: 10px 18px;
+  backdrop-filter: blur(8px);
+}
+
+.menu-energy-icon {
+  font-size: 22px;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+}
+
+.menu-energy-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.menu-energy-num {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+  line-height: 1;
+}
+
+.menu-energy-unit {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: #8888bb;
+  letter-spacing: 1px;
+}
+
+/* ── 区域标题 ────────────────────────────────────────── */
+.menu-section-title {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.menu-section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+}
+
+.menu-section-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #8888bb;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── 文明卡片网格 ─────────────────────────────────────── */
+.tier-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 900px;
+  flex: 1;
+  align-content: start;
+  overflow-y: auto;
+  padding-bottom: 8px;
+}
+
+/* 滚动条美化 */
+.tier-grid::-webkit-scrollbar { width: 4px; }
+.tier-grid::-webkit-scrollbar-track { background: transparent; }
+.tier-grid::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.2); border-radius: 2px; }
+
+/* ── 文明卡片 ─────────────────────────────────────────── */
+.tier-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: rgba(10, 15, 40, 0.7);
+  backdrop-filter: blur(12px);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    background 0.2s ease;
+  overflow: hidden;
+  min-height: 180px;
+  text-align: center;
+  outline: none;
+}
+
+/* 彩色边框（伪元素） */
+.tier-card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+/* ── 解锁卡片 ─────────────────────────────────────────── */
+.tier-card.unlocked {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.tier-card.unlocked:hover,
+.tier-card.unlocked.hovered {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(15, 20, 55, 0.85);
+  box-shadow:
+    0 8px 32px var(--tier-glow),
+    0 0 0 1px var(--tier-color),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.tier-card.unlocked:hover .tier-card-border,
+.tier-card.unlocked.hovered .tier-card-border {
+  border-color: var(--tier-color);
+  box-shadow: inset 0 0 20px var(--tier-glow);
+}
+
+.tier-card.unlocked:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+/* ── 锁定卡片 ─────────────────────────────────────────── */
+.tier-card.locked {
+  cursor: not-allowed;
+  opacity: 0.55;
+  filter: saturate(0.4);
+}
+
+.tier-card.locked .tier-card-border {
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Tier 编号徽章 ────────────────────────────────────── */
+.tier-badge {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--tier-color);
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px var(--tier-color);
+  opacity: 0.8;
+}
+
+/* ── 图标 ─────────────────────────────────────────────── */
+.tier-icon-wrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1.5px solid rgba(255, 255, 255, 0.06);
+  margin-top: 4px;
+  transition: transform 0.3s ease, border-color 0.2s;
+}
+
+.tier-card.unlocked:hover .tier-icon-wrap,
+.tier-card.unlocked.hovered .tier-icon-wrap {
+  transform: scale(1.12);
+  border-color: var(--tier-color);
+  box-shadow: 0 0 16px var(--tier-glow);
+}
+
+.tier-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.tier-lock-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  backdrop-filter: blur(2px);
+}
+
+/* ── 文字信息 ─────────────────────────────────────────── */
+.tier-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.tier-name {
+  font-family: 'Rajdhani', 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #e8e8f0;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.tier-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--tier-color);
+  letter-spacing: 1px;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.tier-desc {
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: #6666aa;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* ── 解锁进度条 ───────────────────────────────────────── */
+.tier-unlock-req {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.tier-req-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  color: #5555aa;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.menu-energy-bar-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.menu-energy-bar-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.menu-energy-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.menu-energy-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: #5555aa;
+  text-align: right;
+}
+
+/* ── 进入按钮 ─────────────────────────────────────────── */
+.tier-unlocked-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--tier-color);
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s, transform 0.2s;
+  text-transform: uppercase;
+}
+
+.tier-card.unlocked:hover .tier-unlocked-badge,
+.tier-card.unlocked.hovered .tier-unlocked-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 底部 ─────────────────────────────────────────────── */
+.menu-footer {
+  position: relative;
+  z-index: 2;
+  margin-top: 16px;
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #444466;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   响应式布局 — 平板（≤900px）
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .main-menu {
+    padding: 20px 16px 16px;
+  }
+
+  .menu-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .menu-energy-display {
+    align-self: flex-end;
+  }
+
+  .tier-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .menu-title {
+    font-size: 22px;
+    letter-spacing: 3px;
+  }
+
+  .menu-logo-icon {
+    font-size: 28px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   响应式布局 — 手机竖屏（≤600px）
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .main-menu {
+    padding: 14px 12px 12px;
+    height: 100dvh; /* 动态视口高度，兼容手机浏览器 */
+  }
+
+  /* 顶部 header 改为紧凑单行 */
+  .menu-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+
+  .menu-logo {
+    gap: 8px;
+  }
+
+  .menu-logo-icon {
+    font-size: 24px;
+  }
+
+  .menu-title {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .menu-tagline {
+    display: none; /* 手机隐藏副标题，节省空间 */
+  }
+
+  /* 能量显示紧凑版 */
+  .menu-energy-display {
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  .menu-energy-num {
+    font-size: 14px;
+  }
+
+  .menu-energy-unit {
+    display: none;
+  }
+
+  .menu-energy-icon {
+    font-size: 16px;
+  }
+
+  /* 区域标题 */
+  .menu-section-title {
+    margin-bottom: 12px;
+  }
+
+  .menu-section-text {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  /* 卡片网格：2列 */
+  .tier-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    flex: 1;
+    overflow-y: auto;
+    /* 手机安全区域 */
+    padding-bottom: env(safe-area-inset-bottom, 8px);
+  }
+
+  /* 卡片本身 */
+  .tier-card {
+    padding: 14px 8px 10px;
+    min-height: 160px;
+    border-radius: 12px;
+    gap: 6px;
+  }
+
+  .tier-icon-wrap {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tier-icon {
+    font-size: 22px;
+  }
+
+  .tier-lock-overlay {
+    font-size: 16px;
+  }
+
+  .tier-badge {
+    font-size: 9px;
+    top: 6px;
+    left: 7px;
+  }
+
+  .tier-name {
+    font-size: 13px;
+  }
+
+  .tier-subtitle {
+    font-size: 8px;
+  }
+
+  .tier-desc {
+    display: none; /* 手机隐藏描述文字 */
+  }
+
+  /* 进度条 */
+  .tier-req-label {
+    font-size: 8px;
+  }
+
+  .menu-energy-label {
+    font-size: 8px;
+  }
+
+  /* 底部 */
+  .menu-footer {
+    font-size: 9px;
+    margin-top: 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   响应式布局 — 小屏手机（≤380px）
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .tier-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .tier-card {
+    min-height: 140px;
+    padding: 12px 6px 8px;
+  }
+
+  .tier-icon-wrap {
+    width: 34px;
+    height: 34px;
+  }
+
+  .tier-icon {
+    font-size: 18px;
+  }
+
+  .tier-name {
+    font-size: 12px;
+  }
+
+  .tier-subtitle {
+    display: none;
+  }
+
+  .tier-badge {
+    font-size: 8px;
+  }
+
+  .tier-icon-wrap {
+    margin-top: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   横屏手机（短宽屏）— 适配横屏时用更宽的布局
+   ═══════════════════════════════════════════════════════ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .main-menu {
+    padding: 10px 20px;
+  }
+
+  .menu-header {
+    margin-bottom: 8px;
+  }
+
+  .menu-logo-icon {
+    font-size: 20px;
+  }
+
+  .menu-title {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .menu-tagline {
+    display: none;
+  }
+
+  .menu-energy-display {
+    padding: 4px 8px;
+  }
+
+  .menu-energy-num {
+    font-size: 12px;
+  }
+
+  .menu-energy-icon {
+    font-size: 14px;
+  }
+
+  .menu-section-title {
+    margin-bottom: 8px;
+  }
+
+  .tier-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    overflow-y: hidden;
+  }
+
+  .tier-card {
+    min-height: 130px;
+    padding: 10px 8px 8px;
+  }
+
+  .tier-desc {
+    display: none;
+  }
+
+  .menu-footer {
+    display: none;
+  }
+}

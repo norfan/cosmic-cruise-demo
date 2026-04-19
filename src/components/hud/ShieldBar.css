@@ -1,0 +1,71 @@
+.shield-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 100px;
+}
+
+.shield-bar-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #00d4ff;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+.shield-icon {
+  font-size: 14px;
+}
+
+.shield-value {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.shield-separator {
+  opacity: 0.6;
+}
+
+.shield-max {
+  opacity: 0.8;
+}
+
+.shield-bar-track {
+  position: relative;
+  height: 8px;
+  background: rgba(0, 212, 255, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.shield-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4ff, #0088cc);
+  border-radius: 4px;
+  transition: width 0.3s ease-out;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+}
+
+.shield-bar-fill.low {
+  background: linear-gradient(90deg, #ff4444, #cc0000);
+  box-shadow: 0 0 12px rgba(255, 68, 68, 0.6);
+  animation: blink 0.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.shield-bar-warning {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff4444;
+  font-size: 10px;
+  font-weight: 700;
+  animation: pulse 0.5s ease-in-out infinite;
+}
